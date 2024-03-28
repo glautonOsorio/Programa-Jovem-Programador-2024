@@ -9,8 +9,14 @@ public class Programa02 {
 		
 	 System.out.println(preco);
 	 
-	 System.out.printf("Valor total: %.2f",preco);
-		
+	 System.out.printf("Valor total: %.2f%n",preco);
+	 
+	 String produto = "Teclado";
+	 int quantidade = 10;
+	 
+	 System.out.printf("produto comprado: %s%n:",produto);
+	 System.out.printf("Quatidade de %s comprados %d:%n: ", produto,quantidade);
+			 
 		
 		
 		
