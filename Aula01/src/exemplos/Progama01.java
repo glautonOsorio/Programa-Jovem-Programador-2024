@@ -24,6 +24,20 @@ public class Progama01 {
 	double preco = 2.99;
 	double salario = 500;
 	
+	boolean verdade = true;
+	verdade = false;
+	
+	
+	char letra = 'A';
+	
+	char outraLetra = 101;
+	
+	String nomeTeste = "Garcia";
+	
+	char primeiraLetraNome = nomeTeste.charAt(3);
+	
+	System.out.println("A primeira letra é: " + primeiraLetraNome);
+	
 	}
 
 }
