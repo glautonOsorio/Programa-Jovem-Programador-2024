@@ -2,7 +2,7 @@ package exemplos;
 import java.util.Random;
 
 
-public class Progarama08 {
+public class Programa08 {
 
 	public static void main(String[] args) {
 		
