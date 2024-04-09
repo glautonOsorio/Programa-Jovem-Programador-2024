@@ -9,7 +9,7 @@ public class Exercicio14 {
 		Scanner read = new Scanner(System.in);
 		
 		
-		System.out.println("Digite 1 caso queira um oi, 2 caso queira um tchau, 3 caso queira um queijo:");
+		System.out.println("Digite 1 caso queira um oi, 2 caso queira um tchau, 3 caso queira uma batata:");
 		int num = read.nextInt();
 		
 		String inventario;
@@ -23,17 +23,20 @@ public class Exercicio14 {
 			System.out.println("Tchau até a proxima");
 			break;
 		case 3:
-			System.out.println("Você ganhou um queijo");
-			inventario = "queijo";
+			System.out.println("Você ganhou uma batata");
+			inventario = "batata";
 			
-			System.out.println("Gostaria de comer o queijo? 1 para sim e 2 para não");
+			System.out.println("Gostaria de comer a batata? 1 para sim e 2 para não");
 			int num2 = read.nextInt();
 			
 			if(num2 == 1 ) {
 				inventario = "";
-				System.out.println("Voce decidiu comer o queijo");
-			}else {
-				System.out.println("Você decidiu guardar o queijo para depois");
+				System.out.println("Voce decidiu comer a batata");
+			}else if(num2 == 2 ) {
+				System.out.println("Você decidiu guardar a batata para depois");
+			} else {
+				System.out.println("Digitou um numero errado");
+
 			}
 				
 			
