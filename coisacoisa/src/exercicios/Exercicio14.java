@@ -11,7 +11,7 @@ public class Exercicio14 {
 		System.out.println("Digite 1 caso queira um oi, 2 caso queira um tchau, 3 caso queira uma batata:");
 		int num = read.nextInt();
 
-		String inventario;
+		String inventory;
 
 		switch (num) {
 		case 1:
@@ -22,18 +22,18 @@ public class Exercicio14 {
 			break;
 		case 3:
 			System.out.println("Você ganhou uma batata");
-			inventario = "batata";
+			inventory = "batata";
 
 			System.out.println("Gostaria de comer a batata? 1 para sim e 2 para não");
 			int num2 = read.nextInt();
 
 			if (num2 == 1) {
-				inventario = "";
+				inventory = "";
 				System.out.println("Voce decidiu comer a batata");
 			} else if (num2 == 2) {
 				System.out.println("Você decidiu guardar a batata para depois");
 			} else {
-				inventario = "";
+				inventory = "";
 				System.out.println("Digitou um numero errado e sua batata foi roubada");
 			}
 
