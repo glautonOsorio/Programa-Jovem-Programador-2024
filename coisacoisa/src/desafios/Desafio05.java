@@ -8,11 +8,11 @@ public class Desafio05 {
         Scanner read = new Scanner(System.in);
 
         System.out.println("Digite Qual item iras comprar:");
-        System.out.println("Digite 1 para Playstation 5 R$4500.00:");
-        System.out.println("Digite 2 para Yakuza Infinity Wealth R$350.00:");
-        System.out.println("Digite 3 para HeartBound R$20.00:");
-        System.out.println("Digite 4 para Street Fighter 6 Deluxe R$540.00:");
-        System.out.println("Digite 5 para Batata R$3.00:");
+        System.out.println("Digite 1 Consultar o Saldo:");
+        System.out.println("Digite 2 Sacar Dinheiro:");
+        System.out.println("Digite 3 Depositar Dinheiro:");
+        System.out.println("Digite 4 Transferir Dinheiro:");
+        System.out.println("Digite 5 Encerrar:");
         int num = read.nextInt();
         read.nextLine();
 
@@ -89,7 +89,7 @@ public class Desafio05 {
                             format = String.format("%.2f", getMoney);
                             account2 += transfer;
 
-                            System.out.printf("O dinheiro que você tranferiu é %s%n", transfer);
+                            System.out.printf("O dinheiro que você transferiu é %s%n", transfer);
                             System.out.printf("O dinheiro que restou em sua conta é %s%n", format);
                             System.out.printf("E a conta transferida esta com %s%n", account2);
                             read.close();
@@ -111,6 +111,7 @@ public class Desafio05 {
 
             default:
                 System.out.println("Digitou errado");
+                read.close();
                 break;
         }
 
