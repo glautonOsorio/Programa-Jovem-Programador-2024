@@ -24,6 +24,10 @@ public class Exercicio03 {
 		} else if (num > 75 && num <= 100) {
 			System.out.println("Seu numero esta entre 75 e 100");
 
+		} 
+		 else if (num < 0 ) {
+			System.out.println("Você digitou um numero negativo, tem que ser entre 0 e 100");
+
 		} else {
 
 			System.out.println("Você digitou um numero errado");
