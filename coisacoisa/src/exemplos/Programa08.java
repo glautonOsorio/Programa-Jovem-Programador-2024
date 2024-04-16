@@ -31,13 +31,15 @@ public class Programa08 {
 				resultado = num1 / num2;
 			} else {
 				System.out.println("ERRO! DIVISAO POR ZERO!");
-				return;
+				
 			}
 		} else {
 			System.out.println("Opção inválida");
 		}
 
 		System.out.println("O resultado da operação foi " + resultado);
+		leia.close();
+
 
 	}
 

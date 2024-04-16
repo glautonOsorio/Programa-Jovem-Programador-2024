@@ -10,6 +10,7 @@ public class Exercicio08 {
       System.out.println("Bem-vindo ao caixa eletrônico!");
       System.out.print("Digite o valor que deseja sacar: ");
       int valorSaque = scanner.nextInt();
+      scanner.close();
       
       int notas100 = valorSaque / 100;
       valorSaque %= 100;

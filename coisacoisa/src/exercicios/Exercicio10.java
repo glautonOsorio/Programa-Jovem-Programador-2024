@@ -13,6 +13,7 @@ public class Exercicio10 {
         int weight = read.nextInt();
         System.out.println("Qual a sua Altura em Metros? Digite em números:");
         double height = read.nextDouble();
+        read.close();
 
         double imcMath = weight / (height * height);
         String imcResult = String.format("%.2f", imcMath);

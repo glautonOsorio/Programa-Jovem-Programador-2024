@@ -10,6 +10,7 @@ public class Exercicio07 {
 
         System.out.println("Digite uma letra do alfabeto: ");
         char letter = read.nextLine().toLowerCase().charAt(0);
+        read.close();
         switch (letter) {
             case 'a':
             case 'e':

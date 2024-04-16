@@ -12,6 +12,7 @@ public class Programa02 {
 		System.out.println("Digite a nota da sua avaliação");
 		
 		int nota = leia.nextInt();
+		leia.close();
 		
 		if (nota >= 7) {
 			

@@ -21,6 +21,7 @@ public class Programa04 {
 		} else {
 			System.out.println("Paga Inteira");
 		}
+		leia.close();
 		
 		
 		

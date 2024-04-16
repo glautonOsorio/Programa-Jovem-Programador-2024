@@ -7,8 +7,8 @@ public class Exercicio09 {
     public static void main(String[] args) {
 
         Scanner read = new Scanner(System.in);
-
         String inventory = "2 Dados";
+        
 
         System.out.println("Você tem 2 dados em sua mão, cada um com números entre 1 e 6");
         System.out.println("Se você jogar eles e conseguir uma soma de 7 ou 11 você ganha um premio secreto");
@@ -18,10 +18,12 @@ public class Exercicio09 {
         if (answer == 'n') {
             System.out.println(
                     "Você usa seu julgamento e decidi não apostar na sorte, seus dados estão seguros em seu bolso para sobreviver mais um dia");
+            read.close();
         } else if (answer != 'n' && answer != 's') {
             System.out.println("Você falha em decidir, e em sua indecisão alguém lhe derruba no chão...");
             inventory = "";
             System.out.println("Apos levantar você nota a ausência de algo e um peso em sua consciência...");
+            read.close();
         } else {
             Random random = new Random();
 
@@ -42,6 +44,7 @@ public class Exercicio09 {
                         System.out.println("Você decidiu guardar a batata para depois");
                         System.out.println(
                                 "Afinal apos testar  a sua sorte e perder seus dados vc não tem a vontade para comer");
+                        read.close();
                     } else if (answer2 != 'n' && answer2 != 's') {
                         System.out.println("Você falha em decidir, e em sua indecisão algo lhe derruba no chão...");
                         inventory = "";
@@ -50,6 +53,7 @@ public class Exercicio09 {
                         String dog = "batata";
                         System.out.printf("Você agora tem um novo amigo, e o nome dele é %s%n", dog);
                         System.out.println("Final feliz?");
+                        read.close();
                         ;
                     } else {
                         inventory = "";
@@ -58,6 +62,7 @@ public class Exercicio09 {
                                 "Você se sente feliz, olhando para o por do sol você percebe o quão lindo e o lugar em que esta");
                         System.out.println(
                                 "Depois de ficar 2 horas avaliando o canário, você volta para sua casa e tem um sono tranquilo");
+                        read.close();
                     }
 
                     break;
@@ -68,10 +73,12 @@ public class Exercicio09 {
                     inventory = "";
                     System.out.println("Você não ganho nada, e perde os seus preciosos dados");
                     System.out.println("Você jura vingança contra o sistema");
+                    read.close();
 
                 default:
                     System.out.println(
                             "Acaba em empate, você não fica nem feliz nem triste, porem você ainda tem os seus dados");
+                    read.close();
                     break;
             }
 
