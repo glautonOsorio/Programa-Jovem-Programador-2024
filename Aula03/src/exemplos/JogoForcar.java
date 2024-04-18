@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class JogoForcar {
@@ -21,20 +22,15 @@ public class JogoForcar {
             char letter = read.nextLine().charAt(0);
 
             for (int i = 0; i < secretWord.length(); i++) {
-                char teste = secretWord.charAt(i);
-
-                if (letter == teste) {
-
+                if (secretWord.charAt(i) == letter) {
                     word.setCharAt(i, letter);
                     rightWord = true;
-
-                } else {
-                    attempts++;
-                    rightWord = false;
-                    System.out.println("Você errou a palavra");
-                    break;
-
                 }
+            }
+
+            if (!rightWord) {
+                attempts++;
+                System.out.println("Você errou a palavra");
             }
             if (attempts == maxAttempts) {
                 System.out.println("Você gastou todas as tentativas");
