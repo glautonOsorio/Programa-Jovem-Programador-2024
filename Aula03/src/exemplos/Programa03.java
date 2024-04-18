@@ -1,4 +1,3 @@
-package exemplos;
 
 import java.util.Scanner;
 
@@ -17,6 +16,9 @@ public class Programa03 {
                     multiplicador + " = " + resultado);
             multiplicador++;
         }
+        
+        leia.close();
+
 
     }
 

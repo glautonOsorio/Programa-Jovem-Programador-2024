@@ -1,4 +1,3 @@
-package exemplos;
 
 public class Programa01 {
 

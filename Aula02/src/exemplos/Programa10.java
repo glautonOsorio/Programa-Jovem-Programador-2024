@@ -64,6 +64,7 @@ public class Programa10 {
 		} else {
 			System.out.println("Credenciais inválidas");
 		}
+		read.close();
 
 	}
 }

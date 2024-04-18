@@ -1,4 +1,3 @@
-package exemplos;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -28,6 +27,7 @@ public class Programa05 {
         }
 
         System.out.println("Numero de tentativas: " + tentativas);
+        leia.close();
 
     }
 
