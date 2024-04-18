@@ -21,37 +21,35 @@ public class JogoForcar {
             char letter = read.nextLine().charAt(0);
 
             for (int i = 0; i < secretWord.length(); i++) {
+                char teste = secretWord.charAt(i);
 
-                if ( letter == secretWord.charAt(i)) {
+                if (letter == teste) {
 
                     word.setCharAt(i, letter);
                     rightWord = true;
 
-                } 
-                if(letter != secretWord.charAt(i)) {
+                } else {
                     attempts++;
                     rightWord = false;
                     System.out.println("Você errou a palavra");
+                    break;
 
                 }
             }
             if (attempts == maxAttempts) {
                 System.out.println("Você gastou todas as tentativas");
                 break;
-               
+
             }
 
             if (rightWord == true) {
                 System.out.println("Você acertou uma palvra");
             }
             if (secretWord.equals(word.toString())) {
-
                 System.out.println("Parabens você ganhou uma batata");
                 return;
-                
+
             }
-
-
 
         }
         read.close();
