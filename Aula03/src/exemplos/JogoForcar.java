@@ -23,12 +23,12 @@ public class JogoForcar {
 
             for (int i = 0; i < secretWord.length(); i++) {
                 if (secretWord.charAt(i) == letter) {
-                    word.setCharAt(i, letter);
                     rightWord = true;
+                    word.setCharAt(i, letter);
                 }
             }
 
-            if (!rightWord) {
+            if (rightWord == false) {
                 attempts++;
                 System.out.println("Você errou a palavra");
             }
