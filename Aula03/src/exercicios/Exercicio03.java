@@ -7,7 +7,6 @@ public class Exercicio03 {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        double totalBill = 0;
         int choice;
         int gas = 0;
         int diesel = 0;
@@ -40,10 +39,9 @@ public class Exercicio03 {
                 System.out.printf("Diesel: %s%n",diesel);
                 break;
             } else {
-                System.out.println("Invalid option");
+                System.out.println("Digitou algo errado");
             }
 
-            System.out.println("TESTING");
 
         }
 
