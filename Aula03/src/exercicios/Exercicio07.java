@@ -1,4 +1,4 @@
-package Aula03.src.exercicios;
+package exercicios;
 
 import java.util.Scanner;
 
@@ -8,22 +8,24 @@ public class Exercicio07 {
 
         Scanner read = new Scanner(System.in);
 
-        System.out.println("Digite uma batata em numero");
-        int batata = read.nextInt();
-        int result = 1;
+        System.out.println("Digite uma letra do alfabeto: ");
+        char letter = read.nextLine().toLowerCase().charAt(0);
+        read.close();
+        switch (letter) {
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+                System.out.println("Sua letra é uma vogal");
 
-        if (batata == 0 || batata == 1) {
+                break;
 
-            System.out.println("O fatorial é " + 1);
-
-        } else {
-
-            for (int i = 2; i <= batata; i++) {
-                result *= i;
-            }
-
-            System.out.printf("O Fatorial de %s é : %s", batata, result);
+            default:
+                System.out.println("Sua letra é uma consoante");
+                break;
         }
+
     }
 
 }

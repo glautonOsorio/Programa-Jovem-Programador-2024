@@ -1,5 +1,3 @@
-package exercises;
-
 
 import java.util.Scanner;
 
@@ -13,7 +11,7 @@ public class Exercicio01 {
         int result = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-            System.out.println("Insira um numero na posição " + numbers[i]);
+            System.out.println("Insira um numero na array");
             int num = read.nextInt();
             numbers[i] = num;
         }
@@ -22,8 +20,8 @@ public class Exercicio01 {
             result += numbers[i];
         }
 
-        System.out.printf("A soma total da array é: %s",result);
-read.close();
+        System.out.printf("A soma total da array é: %s", result);
+        read.close();
     }
 
 }

@@ -1,4 +1,4 @@
-package Aula03.src.exercicios;
+package exercicios;
 
 import java.util.Scanner;
 
@@ -8,36 +8,28 @@ public class Exercicio10 {
 
         Scanner read = new Scanner(System.in);
 
-        int num;
-        int result = 0;
-        int insertedNum = 0;
+        System.out.println("Vamos calcular o seu IMC,aceite o destino e responda de forma seria!");
+        System.out.println("Qual o seu Peso em KG? Digite em números:");
+        int weight = read.nextInt();
+        System.out.println("Qual a sua Altura em Metros? Digite em números:");
+        double height = read.nextDouble();
+        read.close();
 
-        while (true) {
+        double imcMath = weight / (height * height);
+        String imcResult = String.format("%.2f", imcMath);
 
-            System.out.println("Digite um numero:");
-            num = read.nextInt();
-
-            if (num < 0) {
-
-                System.out.println("Aplicação encerrada");
-
-                if (insertedNum == 0) {
-                    System.out.println("Você não inseriu nenhum numero positivo");
-
-                } else {
-
-                    System.out.printf("Essa é a quantidade de numeros positivos que você inseriu: %s%n", insertedNum);
-                    System.out.printf("Essa é a soma de todos os numeros positivos: %s", result);
-                }
-                break;
-
-            } else {
-                insertedNum++;
-                result += num;
-                System.out.println("Numero adicionado");
-
-            }
-
+        if (imcMath < 18.5) {
+            System.out.println("Você está abaixo do peso.");
+            System.out.printf("Seu IMC é %s", imcResult);
+        } else if (imcMath >= 18.5 && imcMath < 25) {
+            System.out.println("Seu peso está normal.");
+            System.out.printf("Seu IMC é %s", imcResult);
+        } else if (imcMath >= 25 && imcMath < 30) {
+            System.out.println("Você está com sobrepeso.");
+            System.out.printf("Seu IMC é %s", imcResult);
+        } else {
+            System.out.println("Você está obeso.");
+            System.out.printf("Seu IMC é %s", imcResult);
         }
 
     }

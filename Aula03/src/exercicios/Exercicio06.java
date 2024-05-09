@@ -1,35 +1,30 @@
-package Aula03.src.exercicios;
+package exercicios;
 
 import java.util.Scanner;
 
 public class Exercicio06 {
 
-    public static void main(String[] args) {
-
-        Scanner read = new Scanner(System.in);
-
-        int num1;
-
-        while (true) {
-
-            System.out.println("Digite um numero:");
-            num1 = read.nextInt();
-
-            if (num1 >= 1) {
-
-                for (int i = 1; i <= num1; i++) {
-                    int multi1 = i * i;
-                    int multi2 = multi1 * i;
-                    System.out.printf("Resposta: %s | %s | %s%n", i, multi1, multi2);
-
-                }
-                break;
-            } else {
-                System.out.println("Digite o numero novamente");
-                read.nextLine();
-            }
-        }
-        read.close();
-    }
+	public static void main(String[] args) {
+	Scanner read = new Scanner(System.in);
+		
+		System.out.println("Digite a primeiro nota do aluno:");
+		int score1 = read.nextInt();
+		System.out.println("Digite a segunda nota do aluno:");
+		int score2 = read.nextInt();
+		System.out.println("Digite a terceira nota do aluno:");
+		int score3 = read.nextInt();
+		
+		read.close();
+		
+		double result = (score1 + score2 + score3) / 3;
+		
+		if(result >= 7) {
+			System.out.printf("O aluno foi aprovado com %s pontos",result);
+		}else if(result <= 4) {
+			System.out.printf("O aluno foi reprovado com %s pontos",result);
+		}else {
+			System.out.printf("O aluno esta em recuperação com %s pontos",result);
+		}
+	}
 
 }

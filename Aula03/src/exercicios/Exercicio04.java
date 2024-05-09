@@ -1,35 +1,40 @@
-package Aula03.src.exercicios;
+package exercicios;
 
 import java.util.Scanner;
 
 public class Exercicio04 {
-    public static void main(String[] args) {
 
-        Scanner read = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		Scanner read = new Scanner(System.in);
+		
+		System.out.println("Digite o nome de um dia da semana:");
+		String day = read.nextLine();
+		
+		read.close();
+		
+		switch (day.toLowerCase()) {
+		case "segunda":
+		case "terça":
+		case "quarta":
+		case "quinta":
+		case "sexta":
+			System.out.printf("Você digitou %s, que é um dia util %n",day);
+			break;
+		case "sabado":
+		case "domingo":
+		
+			System.out.printf("Você digitou %s, que é um fim de semana",day);
+			break;
+	
 
-        int num1;
-        int result;
+		default:
+			System.out.println("Você digitou um valor errado");
+			break;
+		}
 
-        while (true) {
+		
 
-            System.out.println("Digite um numero entre 1 até 1000 para mostrar todos os impares até o numero digitado");
-            num1 = read.nextInt();
-
-            if (num1 >= 1 && num1 <= 1000) {
-
-                for (int i = 1; i <= num1; i++) {
-                    result = i % 2;
-                    if (result != 0) {
-                        System.out.printf("Impar: %s%n", i);
-                    }
-                }
-                break;
-            } else {
-                System.out.println("Digite o numero novamente");
-                read.nextLine();
-            }
-        }
-        read.close();
-    }
+	}
 
 }

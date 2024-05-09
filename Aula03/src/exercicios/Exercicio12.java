@@ -1,4 +1,4 @@
-package Aula03.src.exercicios;
+package exercicios;
 
 import java.util.Scanner;
 
@@ -7,24 +7,16 @@ public class Exercicio12 {
 
         Scanner read = new Scanner(System.in);
 
-        System.out.println("Digite uma palavra:");
-        String word = read.nextLine().toLowerCase().trim();
-        int aResult = 0;
+        System.out.println("Digite o primeiro numero:");
+        int num1 = read.nextInt();
+        System.out.println("Digite o segundo numero:");
+        int num2 = read.nextInt();
 
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == 'a') {
-                aResult++;
-            }
-        }
+        read.close();
 
-        if (aResult == 0) {
+        int result = (num1 > num2) ? num1 : num2;
 
-            System.out.printf("A sua palavra %s não contem  letras a", word);
-        } else {
-
-            System.out.printf("A sua palavra %s contem %s letras a", word, aResult);
-        }
+        System.out.printf("O numero %s é o maior ", result);
 
     }
-
 }
