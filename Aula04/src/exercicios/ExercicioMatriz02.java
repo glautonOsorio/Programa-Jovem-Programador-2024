@@ -1,5 +1,3 @@
-package Testando;
-
 import java.util.Scanner;
 
 public class ExercicioMatriz02 {
@@ -18,8 +16,10 @@ public class ExercicioMatriz02 {
             }
         }
 
-        int result = matriz[0][0] + matriz[1][1] + matriz[2][2];
-
+        for (int i = 0; i < matriz.length; i++) {
+            result += matriz[i][i];
+        }
+        
         System.out.println("O resultado da soma é " + result);
 
         read.close();
