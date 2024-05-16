@@ -1,16 +1,31 @@
+package Aula03.src.exercicios;
+
+import java.util.Scanner;
+
 public class Exercicio01 {
 
     public static void main(String[] args) {
 
-        int num1 = 10;
+        Scanner read = new Scanner(System.in);
 
-        int num2 = -10;
+        int secretPassword = 2002;
 
-        String result = (num1 > 0) ? "Numero positivo" : "Numero Negativo";
-        String result2 = (num2 > 0) ? "Numero positivo" : "Numero Negativo";
+        int password;
 
-        System.out.printf("O primeiro resultado foi %s%n", result);
-        System.out.printf("O segundo resultado foi %s", result2);
+        while (true) {
+
+            System.out.println("Digite a sua senha");
+            password = read.nextInt();
+
+            if (password == secretPassword) {
+                System.out.println("Você esta logado! Bem vindo!!");
+                break;
+            } else {
+                System.out.println("Você errou a senha tente novamente");
+            }
+
+        }
+
     }
 
 }

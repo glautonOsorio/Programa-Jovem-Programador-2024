@@ -1,47 +1,44 @@
-package exercicios;
+package Aula03.src.exercicios;
 
 import java.util.Scanner;
 
 public class Exercicio13 {
 
     public static void main(String[] args) {
-
         Scanner read = new Scanner(System.in);
 
-        System.out.println("Avalie o nosso sistema com uma nota entre 0 e 10:");
-        int num = read.nextInt();
+        String secretWord = "temporizador";
+        boolean test = false;
+        String word;
 
-        read.close();
+        while (true) {
 
-        if (num > 10 || num < 0) {
-            System.out.println("Você digitou um numero invalido");
+            System.out.printf("Digite uma palavra de %s%n:", secretWord.length());
+            word = read.nextLine().toLowerCase();
+            if (word.length() != secretWord.length()) {
+                System.out.printf("A letra tem que ter %s%n digitos", secretWord.length());
 
-        } else {
+            } else {
 
-            switch (num) {
-                case 10:
-                case 9:
-                    System.out.printf("Você nos avaliou em %s que seria o equivalente a um A", num);
-                    break;
-                case 8:
-                    System.out.printf("Você nos avaliou em %s que seria o equivalente a um B", num);
-                    break;
+                for (int i = 0; i < secretWord.length(); i++) {
 
-                case 7:
-                    System.out.printf("Você nos avaliou em %s que seria o equivalente a um C", num);
-                    break;
-                case 6:
-                    System.out.printf("Você nos avaliou em %s que seria o equivalente a um D", num);
-                    break;
-                case 5:
-                    System.out.printf("Você nos avaliou em %s que seria o equivalente a um E", num);
-                    break;
+                    if (word.charAt(i) == secretWord.charAt(i)) {
+                        test = true;
+                    } else {
+                        break;
+                    }
+                }
 
-                default:
-                    System.out.printf("Você nos avaliou em %s que seria o equivalente a um F", num);
+                if (test == false) {
+                    System.out.println("Você errou a palavra tente novamente");
+
+                } else {
+                    System.out.println("Você acertou a palavra parabéns");
                     break;
+                }
             }
         }
+        read.close();
 
     }
 

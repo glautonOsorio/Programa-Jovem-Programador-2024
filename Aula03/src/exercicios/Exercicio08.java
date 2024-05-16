@@ -1,55 +1,63 @@
-package exercicios;
+package Aula03.src.exercicios;
+
 import java.util.Scanner;
 
 public class Exercicio08 {
-    
-      
-      public static void main(String[] args) {
-      Scanner scanner = new Scanner(System.in);
-      
-      System.out.println("Bem-vindo ao caixa eletrônico!");
-      System.out.print("Digite o valor que deseja sacar: ");
-      int valorSaque = scanner.nextInt();
-      scanner.close();
-      
-      int notas100 = valorSaque / 100;
-      valorSaque %= 100;
-      int notas50 = valorSaque / 50;
-      valorSaque %= 50;
-      int notas20 = valorSaque / 20;
-      valorSaque %= 20;
-      int notas10 = valorSaque / 10;
-      valorSaque %= 10;
-      int notas5 = valorSaque / 5;
-      valorSaque %= 5;
-      int notas2 = valorSaque / 2;
-      valorSaque %= 2;
-      int notas1 = valorSaque;
-      
-      System.out.println("Você receberá as seguintes notas:");
-      if (notas100 > 0) {
-      System.out.println(notas100 + " nota(s) de R$100");
-      }
-      if (notas50 > 0) {
-      System.out.println(notas50 + " nota(s) de R$50");
-      }
-      if (notas20 > 0) {
-      System.out.println(notas20 + " nota(s) de R$20");
-      }
-      if (notas10 > 0) {
-      System.out.println(notas10 + " nota(s) de R$10");
-      }
-      if (notas5 > 0) {
-      System.out.println(notas5 + " nota(s) de R$5");
-      }
-      if (notas2 > 0) {
-      System.out.println(notas2 + " nota(s) de R$2");
-      }
-      if (notas1 > 0) {
-      System.out.println(notas1 + " nota(s) de R$1");
-      }
-      }
-      
-     
-}
 
+      public static void main(String[] args) {
+
+            Scanner read = new Scanner(System.in);
+
+            int in = 0;
+            int out = 0;
+            int numOperations;
+            int num1;
+            int again;
+
+            while (true) {
+                  System.out.println("Quantas operações de divisão você quer fazer?");
+                  numOperations = read.nextInt();
+                  if (numOperations == 0) {
+                        System.out.println("A aplicação encerrou");
+                        break;
+                  } else {
+
+                        for (int i = 1; i <= numOperations; i++) {
+
+                              System.out.println("Digite um numero:");
+                              num1 = read.nextInt();
+
+                              if (num1 >= 10 && num1 <= 20) {
+                                    in++;
+                              } else {
+                                    out++;
+                              }
+                        }
+
+                        System.out.printf("Os numeros que estão dentro são: %s%n", in);
+                        System.out.println(" ");
+                        System.out.printf("Os numeros que estão fora são: %s%n", out);
+                        System.out.println(" ");
+
+                        System.out.println("Quer continuar o progrma? 1 = sim | 2 = não");
+                        again = read.nextInt();
+
+                        if (again == 2) {
+                              System.out.println("Termino da aplicação");
+                              break;
+                        } else if (again != 1 && again != 2) {
+                              System.out.println("Digitou o numero errado, a aplicação ira fechar");
+                              break;
+                        } else {
+                              System.out.println("A Aplicação ira reiniciar");
+
+                        }
+
+                  }
+
+            }
+
+            read.close();
+      }
+
+}

@@ -1,4 +1,4 @@
-package exercicios;
+package Aula03.src.exercicios;
 
 import java.util.Scanner;
 
@@ -6,28 +6,44 @@ public class Exercicio03 {
 
 	public static void main(String[] args) {
 
-		Scanner read = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
+		int choice;
+		int gas = 0;
+		int diesel = 0;
+		int alcool = 0;
 
-		System.out.println("Digite um valor entre 0 e 100");
-		int num = read.nextInt();
+		while (true) {
 
-		read.close();
+			System.out.println("Menu");
+			System.out.println("1. Álcool");
+			System.out.println("2. Gasolina");
+			System.out.println("3. Diesel");
+			System.out.println("4. Fim");
+			System.out.println("Enter 1, 2, 3, or 4");
+			choice = scan.nextInt();
 
-		if (num >= 0 && num <= 25) {
-			System.out.println("Seu numero esta entre 0 e 25");
+			if (choice == 1) {
+				System.out.println("Álcool adicionada com sucesso");
+				alcool += 1;
+			} else if (choice == 2) {
+				System.out.println("Gasolina adicionada com sucesso");
+				gas += 1;
+			} else if (choice == 3) {
+				System.out.println("Diesel adicionada com sucesso");
+				diesel += 1;
+			} else if (choice == 4) {
+				System.out.println("Pedido Fechado");
+				System.out.printf("Gasolina: %s%n", gas);
+				System.out.printf("Álcool: %s%n", alcool);
+				System.out.printf("Diesel: %s%n", diesel);
+				break;
+			} else {
+				System.out.println("Digitou algo errado");
+			}
 
-		} else if (num > 25 && num <= 50) {
-			System.out.println("Seu numero esta entre 25 e 50");
-		} else if (num > 50 && num <= 75) {
-			System.out.println("Seu numero esta entre 50 e 75");
-
-		} else if (num > 75 && num <= 100) {
-			System.out.println("Seu numero esta entre 75 e 100");
-
-		} else {
-
-			System.out.println("Você digitou um numero errado");
 		}
+
+		scan.close();
 
 	}
 
