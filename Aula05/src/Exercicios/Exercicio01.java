@@ -1,4 +1,4 @@
-package Exercicios;
+package src.Exercicios;
 
 public class Exercicio01 {
 

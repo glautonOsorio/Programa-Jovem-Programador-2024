@@ -1,4 +1,4 @@
-package Exercicios;
+package src.Exercicios;
 
 import java.util.Scanner;
 
@@ -12,8 +12,7 @@ public class Exercicio04 {
 		double temperature = read.nextDouble();
 
 		double temperatureF = Transform(temperature);
-		
-			
+
 		System.out.println("A temperature formatada em F é " + temperatureF);
 
 	}

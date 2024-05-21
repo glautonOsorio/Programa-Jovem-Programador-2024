@@ -1,39 +1,41 @@
+package Exemplos;
+
 public class Programa01 {
-    public static void main(String[] args) {
 
-        int number = 46;
-        int number2 = 64;
+	public static void main(String[] args) {
 
-        int res = Add(number, number2);
+		// invocar função
+		int numero1 = 50;
+		int numero2 = 20;
+		int res = somar(numero1, numero2);
+		System.out.println("O resultado é " + res);
+		
+		saudacoes("Rogério");
+		
+		// Invocando a função da media do vetor
+		double[] alturas = { 1.60, 1.80, 1.70, 1.50 };
+		double media = vetorMedia(alturas);
+		System.out.println("A média é " + media);
 
-        System.out.println(res);
+	}
 
-    }
+	public static int somar(int num1, int num2) {
+		int resultado = num1 + num2;
+		return resultado;
+	}
 
-    public static int Add(int num1, int num2) {
+	// Void - não retorna valor
+	public static void saudacoes(String nome) {
+		System.out.println("Bem vindo " + nome);
 
-        int result = num1 + num2;
+	}
 
-        return result;
-    }
-
-    public static void Greetings(String name) {
-        System.out.println("Bem vindo " + name);
-    }
-
-    public static double ArrayAverege(double[] nums) {
-
-        double add = 0;
-
-        for (int i = 0; i < nums.length; i++) {
-
-            soma += nums[i];
-
-        }
-
-        double avarege = add/nums.length;
-
-        return avarege;
-    }
-
+	public static double vetorMedia(double[] vetor) {
+		double soma = 0;
+		for (int i = 0; i < vetor.length; i++) {
+			soma = soma + vetor[i];
+		}
+		double media = soma / vetor.length;
+		return media;
+	}
 }
