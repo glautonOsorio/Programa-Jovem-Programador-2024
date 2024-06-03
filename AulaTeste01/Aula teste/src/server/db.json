@@ -1,0 +1,45 @@
+{
+    "alunos": [
+      {
+        "id": 1,
+        "nome": "João Silva",
+        "nota1": 8.5,
+        "nota2": 7.5,
+        "nota3": 6.8,
+        "nota4": 9.0,
+        "media": 7.95,
+        "situacao": "aprovado"
+      },
+      {
+        "id": 2,
+        "nome": "Maria Santos",
+        "nota1": 6.0,
+        "nota2": 7.2,
+        "nota3": 5.5,
+        "nota4": 6.8,
+        "media": 6.375,
+        "situacao": "aprovado"
+      },
+      {
+        "id": 3,
+        "nome": "Pedro Oliveira",
+        "nota1": 4.5,
+        "nota2": 6.8,
+        "nota3": 5.9,
+        "nota4": 4.0,
+        "media": 5.3,
+        "situacao": "reprovado"
+      },
+      {
+        "id": 4,
+        "nome": "Ana Costa",
+        "nota1": 7.8,
+        "nota2": 6.7,
+        "nota3": 8.0,
+        "nota4": 7.5,
+        "media": 7.5,
+        "situacao": "aprovado"
+      }
+    ]
+  }
+  
