@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entidades.Produto;
+import entidades.Medico;
 
-public class ProdutoDao {
+public class MedicoDao {
 
 	public Connection getConexao() throws ClassNotFoundException {
 
@@ -29,7 +28,7 @@ public class ProdutoDao {
 		try {
 
 			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("Amigo estou aqui");
+			System.out.println("Connected");
 
 		} catch (SQLException e) {
 
@@ -40,25 +39,19 @@ public class ProdutoDao {
 		return conn;
 	}
 
-	public void cadastrarProduto(Produto produto) {
+	public void cadastrarMedico(Medico medico) {
 
-		String insert = "INSERT INTO produtos(nome,marca,preco,quantidade,data_entrada,categoria)VALUES(?,?,?,?,?,?)";
+		String insert = "INSERT INTO medicos(nome, especialidade) VALUES(?, ?)";
 
 		try {
 
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(insert);
-			pst.setString(1, produto.getNome());
-			pst.setString(2, produto.getMarca());
-			pst.setDouble(3, produto.getPreco());
-			pst.setInt(4, produto.getQuantidade());
-			pst.setDate(5, produto.getData());
-			pst.setString(6, produto.getCategoria());
+			pst.setString(1, medico.getNome());
+			pst.setString(2, medico.getEspecialidade());
 
 			pst.executeUpdate();
-
 			System.out.println("Cadastrado");
-
 			pst.close();
 			conn.close();
 
@@ -68,11 +61,11 @@ public class ProdutoDao {
 
 	}
 
-	public List<Produto> listaProdutos() {
+	public List<Medico> listarMedicos() {
 
-		List<Produto> produtos = new ArrayList<>();
+		List<Medico> medicos = new ArrayList<>();
 
-		String sql = "SELECT * FROM produtos";
+		String sql = "SELECT * FROM medicos";
 
 		try {
 
@@ -81,15 +74,11 @@ public class ProdutoDao {
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				int id = rs.getInt(1);
-				String nome = rs.getString(2);
-				String marca = rs.getString(3);
-				double preco = rs.getDouble(4);
-				int quantidade = rs.getInt(5);
-				Date data_entrada = rs.getDate(6);
-				String categoria = rs.getString(7);
-				Produto produto = new Produto(id, nome, marca, preco, quantidade, data_entrada, categoria);
-				produtos.add(produto);
+				int id = rs.getInt("id");
+				String nome = rs.getString("nome");
+				String especialidade = rs.getString("especialidade");
+				Medico medico = new Medico(id, nome, especialidade);
+				medicos.add(medico);
 			}
 
 			rs.close();
@@ -100,21 +89,21 @@ public class ProdutoDao {
 			e.printStackTrace();
 		}
 
-		return produtos;
+		return medicos;
 
 	}
 
-	public void alterarProduto(Produto produto) {
-		String sql = "UPDATE produtos SET marca = ?, preco= ? WHERE id = ?";
+	public void alterarMedico(Medico medico) {
+		String sql = "UPDATE medicos SET nome = ?, especialidade = ? WHERE id = ?";
 
 		try {
 
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(sql);
 
-			pst.setString(1, produto.getMarca());
-			pst.setDouble(2, produto.getPreco());
-			pst.setInt(3, produto.getId());
+			pst.setString(1, medico.getNome());
+			pst.setString(2, medico.getEspecialidade());
+			pst.setInt(3, medico.getId());
 			pst.executeUpdate();
 			pst.close();
 			conn.close();
@@ -125,8 +114,8 @@ public class ProdutoDao {
 
 	}
 
-	public void deleteProdutos(int id) throws ClassNotFoundException {
-		String sql = "DELETE FROM produtos WHERE id=?";
+	public void deleteMedico(int id) {
+		String sql = "DELETE FROM medicos WHERE id=?";
 
 		try {
 
@@ -139,16 +128,15 @@ public class ProdutoDao {
 			pst.close();
 			conn.close();
 
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public Produto findById(int id) {
 
+	public Medico findById(int id) {
 
-		String sql = "SELECT * FROM produtos WHERE id=?";
-		Produto produto = null;
+		String sql = "SELECT * FROM medicos WHERE id=?";
+		Medico medico = null;
 
 		try {
 
@@ -158,15 +146,10 @@ public class ProdutoDao {
 			ResultSet rs = pst.executeQuery();
 
 			while (rs.next()) {
-				id = rs.getInt(1);
-				String nome = rs.getString(2);
-				String marca = rs.getString(3);
-				double preco = rs.getDouble(4);
-				int quantidade = rs.getInt(5);
-				Date data_entrada = rs.getDate(6);
-				String categoria = rs.getString(7);
-				produto = new Produto(id, nome, marca, preco, quantidade, data_entrada, categoria);
-				
+				id = rs.getInt("id");
+				String nome = rs.getString("nome");
+				String especialidade = rs.getString("especialidade");
+				medico = new Medico(id, nome, especialidade);
 			}
 
 			rs.close();
@@ -177,7 +160,7 @@ public class ProdutoDao {
 			e.printStackTrace();
 		}
 
-		return produto;
+		return medico;
 
 	}
 }

@@ -9,10 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entidades.Paciente;
 import entidades.Produto;
 
-public class ProdutoDao {
-
+public class PacienteDao {
+	
 	public Connection getConexao() throws ClassNotFoundException {
 
 		String driver = "com.mysql.cj.jdbc.Driver";
@@ -39,26 +40,20 @@ public class ProdutoDao {
 
 		return conn;
 	}
+	
+	public void cadastrarPaciente(Paciente paciente) {
 
-	public void cadastrarProduto(Produto produto) {
-
-		String insert = "INSERT INTO produtos(nome,marca,preco,quantidade,data_entrada,categoria)VALUES(?,?,?,?,?,?)";
+		String insert = "INSERT INTO pacientes(nome,idade)VALUES(?,?)";
 
 		try {
 
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(insert);
-			pst.setString(1, produto.getNome());
-			pst.setString(2, produto.getMarca());
-			pst.setDouble(3, produto.getPreco());
-			pst.setInt(4, produto.getQuantidade());
-			pst.setDate(5, produto.getData());
-			pst.setString(6, produto.getCategoria());
+			pst.setString(1, paciente.getNome());
+			pst.setInt(2, paciente.getIdade());
 
 			pst.executeUpdate();
-
 			System.out.println("Cadastrado");
-
 			pst.close();
 			conn.close();
 
@@ -67,12 +62,12 @@ public class ProdutoDao {
 		}
 
 	}
+	
+	public List<Paciente> listarPacientes() {
 
-	public List<Produto> listaProdutos() {
+		List<Paciente> pacientes = new ArrayList<>();
 
-		List<Produto> produtos = new ArrayList<>();
-
-		String sql = "SELECT * FROM produtos";
+		String sql = "SELECT * FROM pacientes";
 
 		try {
 
@@ -83,13 +78,9 @@ public class ProdutoDao {
 			while (rs.next()) {
 				int id = rs.getInt(1);
 				String nome = rs.getString(2);
-				String marca = rs.getString(3);
-				double preco = rs.getDouble(4);
-				int quantidade = rs.getInt(5);
-				Date data_entrada = rs.getDate(6);
-				String categoria = rs.getString(7);
-				Produto produto = new Produto(id, nome, marca, preco, quantidade, data_entrada, categoria);
-				produtos.add(produto);
+				int idade = rs.getInt(3);
+				Paciente paciente = new Paciente(id, nome, idade);
+				pacientes.add(paciente);
 			}
 
 			rs.close();
@@ -100,21 +91,21 @@ public class ProdutoDao {
 			e.printStackTrace();
 		}
 
-		return produtos;
+		return pacientes;
 
 	}
-
-	public void alterarProduto(Produto produto) {
-		String sql = "UPDATE produtos SET marca = ?, preco= ? WHERE id = ?";
+	
+	public void alterarPaciente(Paciente paciente) {
+		String sql = "UPDATE pacientes SET nome = ?, idade= ? WHERE id = ?";
 
 		try {
 
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(sql);
 
-			pst.setString(1, produto.getMarca());
-			pst.setDouble(2, produto.getPreco());
-			pst.setInt(3, produto.getId());
+			pst.setString(1, paciente.getNome());
+			pst.setDouble(2, paciente.getIdade());
+			pst.setInt(3, paciente.getId());
 			pst.executeUpdate();
 			pst.close();
 			conn.close();
@@ -124,9 +115,8 @@ public class ProdutoDao {
 		}
 
 	}
-
-	public void deleteProdutos(int id) throws ClassNotFoundException {
-		String sql = "DELETE FROM produtos WHERE id=?";
+	public void deletePacientes(int id) throws ClassNotFoundException {
+		String sql = "DELETE FROM pacientes WHERE id=?";
 
 		try {
 
@@ -144,12 +134,12 @@ public class ProdutoDao {
 		}
 	}
 	
-	public Produto findById(int id) {
+	public Paciente findById(int id) {
 
 
-		String sql = "SELECT * FROM produtos WHERE id=?";
-		Produto produto = null;
-
+		String sql = "SELECT * FROM pacientes WHERE id=?";
+		Paciente paciente = null;
+		
 		try {
 
 			Connection conn = getConexao();
@@ -160,12 +150,8 @@ public class ProdutoDao {
 			while (rs.next()) {
 				id = rs.getInt(1);
 				String nome = rs.getString(2);
-				String marca = rs.getString(3);
-				double preco = rs.getDouble(4);
-				int quantidade = rs.getInt(5);
-				Date data_entrada = rs.getDate(6);
-				String categoria = rs.getString(7);
-				produto = new Produto(id, nome, marca, preco, quantidade, data_entrada, categoria);
+				int idade = rs.getInt(3);
+				paciente = new Paciente(id, nome, idade);
 				
 			}
 
@@ -177,7 +163,9 @@ public class ProdutoDao {
 			e.printStackTrace();
 		}
 
-		return produto;
+		return paciente;
 
 	}
+
+
 }

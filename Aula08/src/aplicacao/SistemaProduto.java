@@ -19,13 +19,13 @@ public class SistemaProduto {
 		// dao.cadastrarProduto(produto);
 		// dao.cadastrarProduto(produto1);
 
-		List<Produto> lista = dao.listaProdutos();
+		/*List<Produto> lista = dao.listaProdutos();
 		for (Produto prod : lista) {
 			System.out.println(prod);
 
-		}
+		}*/
 		
-		produto = lista.get(1);
+		/*produto = lista.get(1);
 		produto.setMarca("Razor");
 		produto.setPreco(250);
 		
@@ -36,7 +36,11 @@ System.out.println("Depois de atualizar");
 		for (Produto prod : lista) {
 			System.out.println(prod);
 
-		}
+		}*/
+		
+		Produto produto3 = dao.findById(1);
+		
+		System.out.println(produto3);
 
 	}
 
