@@ -124,4 +124,18 @@ public class ProdutoDao {
 
 	}
 
+	public void deleteProdutos(Produto produto) {
+		var sql = "DELETE FROM products WHERE id=?";
+
+		try (Connection conn = getConexao();
+				PreparedStatement pst = conn.prepareStatement(sql)) {
+
+			pst.setInt(1, produto.getId());
+			pst.executeUpdate();
+			System.out.println("Deletado com sucesso");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
