@@ -22,18 +22,17 @@ public class SistemaMedicoGarcia {
 		
 		ConsultaDao daoConsulta = new ConsultaDao();
 		
-		List<Paciente> listaP = daoPaciente.listarPacientes();
+	/*	List<Paciente> listaP = daoPaciente.listarPacientes();
 		List<Medico> listaM = daoMedico.listarMedicos();
 		
 		for (Medico medico : listaM) {
 			System.out.println(listaM);
 		}
 		for (Paciente paciente : listaP) {
-			System.out.println(listaP);
-		}
+			System.out.println(listaP);*/
 		
-		Paciente paciente = daoPaciente.findById(2);
-		Medico medico = daoMedico.findById(1);
+		Paciente paciente = daoPaciente.findById(1);
+		Medico medico = daoMedico.findById(2);
 		Consultas consulta = new Consultas(paciente, medico, Date.valueOf("2024-06-04"), "Exame de sangue"); 
 		daoConsulta.cadastrarConsulta(consulta);
 	}

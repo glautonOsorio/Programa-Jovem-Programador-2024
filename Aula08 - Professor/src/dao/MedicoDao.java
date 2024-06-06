@@ -38,19 +38,27 @@ public class MedicoDao {
 
 		return conn;
 	}
+
+
 	public void cadastrarMedico(Medico medico) {
 
-		String insert = "INSERT INTO medicos(nome, especialidade) VALUES(?, ?)";
+		String insert = "INSERT INTO medicos" 
+		+ "(nome,especialidade) "
+				+ "VALUES(?,?)";
 
 		try {
-
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(insert);
+
+			// Trocando os ?,?,?,?,?,? pelos valores
 			pst.setString(1, medico.getNome());
 			pst.setString(2, medico.getEspecialidade());
+			
 
+			// Executando a consulta
 			pst.executeUpdate();
-			System.out.println("Cadastrado");
+
+			// Fechamento da conexão
 			pst.close();
 			conn.close();
 
@@ -60,43 +68,37 @@ public class MedicoDao {
 
 	}
 
-	public List<Medico> listarMedicos() {
-
+	public List<Medico> listaMedicos() {
 		List<Medico> medicos = new ArrayList<>();
-
 		String sql = "SELECT * FROM medicos";
 
 		try {
-
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
-
 			while (rs.next()) {
-				int id = rs.getInt("id");
-				String nome = rs.getString("nome");
-				String especialidade = rs.getString("especialidade");
+				int id = rs.getInt(1);
+				String nome = rs.getString(2);
+				String especialidade = rs.getString(3);				
+
 				Medico medico = new Medico(id, nome, especialidade);
 				medicos.add(medico);
-			}
 
+			}
 			rs.close();
 			pst.close();
 			conn.close();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return medicos;
-
 	}
 
 	public void alterarMedico(Medico medico) {
-		String sql = "UPDATE medicos SET nome = ?, especialidade = ? WHERE id = ?";
+
+		String sql = "UPDATE medicos SET nome = ? , especialidade = ? WHERE id = ?";
 
 		try {
-
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(sql);
 
@@ -104,6 +106,7 @@ public class MedicoDao {
 			pst.setString(2, medico.getEspecialidade());
 			pst.setInt(3, medico.getId());
 			pst.executeUpdate();
+
 			pst.close();
 			conn.close();
 
@@ -112,54 +115,64 @@ public class MedicoDao {
 		}
 
 	}
-
-	public void deleteMedico(int id) {
-		String sql = "DELETE FROM medicos WHERE id=?";
-
+	
+	
+	public void deletarMedico (int id) {
+		
+		String sql = "delete from medicos where id = ?";
 		try {
-
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(sql);
-
 			pst.setInt(1, id);
+			
+			// Executando minha consulta
 			pst.executeUpdate();
-			System.out.println("Deletado com sucesso");
+			
 			pst.close();
 			conn.close();
-
-		} catch (SQLException | ClassNotFoundException e) {
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
 	}
+	
+	public Medico pesquisarPorId(int id) {
+		
+		String sql = "SELECT * FROM medicos where id = ?";
 
-	public Medico findById(int id) {
-
-		String sql = "SELECT * FROM medicos WHERE id=?";
 		Medico medico = null;
-
 		try {
-
 			Connection conn = getConexao();
 			PreparedStatement pst = conn.prepareStatement(sql);
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
-
 			while (rs.next()) {
-				id = rs.getInt("id");
-				String nome = rs.getString("nome");
-				String especialidade = rs.getString("especialidade");
-				medico = new Medico(id, nome, especialidade);
-			}
+				id = rs.getInt(1);
+				String nome = rs.getString(2);
+				String especialidade = rs.getString(3);
+				
 
+				medico = new Medico(id, nome, especialidade);
+				
+			}
 			rs.close();
 			pst.close();
 			conn.close();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return medico;
-
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 }
