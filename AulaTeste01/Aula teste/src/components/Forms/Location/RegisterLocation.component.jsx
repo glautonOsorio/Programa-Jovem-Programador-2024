@@ -3,6 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+
 import * as Styled from "../Form.styles.jsx";
 import { InputComponent } from "../../Input/Input.component.jsx";
 import { ButtonComponent } from "../../Button/Button.component.jsx";
@@ -17,6 +18,28 @@ export const RegisterLocationComponent = () => {
     getValues,
     formState: { errors },
   } = useForm();
+
+  
+  const [media, setMedia] = useState(0);
+
+  const calculateMedia = () => {
+    const values = getValues(['nota1', 'nota2', 'nota3', 'nota4']);
+    const notas = Object.values(values).map(parseFloat);
+    const total = notas.reduce((acc, nota) => acc + nota, 0);
+    const average = total / notas.length || 0;
+    setMedia(average.toFixed(2));
+    setValue("media",media)
+    if (media >= 7.0) {
+      setValue("situacao","Aprovado")
+
+    }else if(media < 5){
+      setValue("situacao","Reprovado")
+
+    }else{
+      setValue("situacao","Recuperação")
+
+    }
+  };
 
   const submitForm = (data) => {
     console.log(data);
@@ -33,12 +56,9 @@ export const RegisterLocationComponent = () => {
             placeholder="Digite a matrícula"
             label="Matrícula"
             register={register("matricula", {
-              required: "Campo obrigatório",
-              maxLength: {
-                value: 64,
-                message: "Campo precisa ter menos de 64 caracteres",
-              },
+              
             })}
+            
             error={!!errors.matricula}
             errorMessage={errors.matricula?.message}
           />
@@ -62,72 +82,72 @@ export const RegisterLocationComponent = () => {
             <InputComponent
               id="nota1"
               name="nota1"
-              type="number"
+              type="text"
               placeholder="Digite a nota 1"
               label="Nota 1"
               register={register("nota1", {
                 required: "Campo obrigatório",
+                onBlur: () =>calculateMedia(),
                 pattern: {
-                  value: /^\d+(\.\d{1,2})?$/,
+                  value: /^(10(\.0{1,2})?|\d(\.\d{1,2})?)$/,
                   message: " Maximum two decimal places allowed.",
                 },
-                value: 0.0,
-              })}
+               
+                })}
               error={!!errors.nota1}
               errorMessage={errors.nota1?.message}
             />
             <InputComponent
               id="nota2"
               name="nota2"
-              type="number"
+              type="text"
               placeholder="Digite a nota 2"
               label="Nota 2"
               register={register("nota2", {
                 required: "Campo obrigatório",
+                onBlur: () =>calculateMedia(),
                 pattern: {
-                  value: /^\d+(\.\d{1,2})?$/,
+                  value: /^(10(\.0{1,2})?|\d(\.\d{1,2})?)$/,
                   message: " Maximum two decimal places allowed.",
                 },
-                value: 0.0,
-              })}
+              
+                })}
               error={!!errors.nota2}
               errorMessage={errors.nota2?.message}
             />
             <InputComponent
               id="nota3"
               name="nota3"
-              type="number"
+              type="text"
               placeholder="Digite a nota 3"
               label="Nota 3"
               register={register("nota3", {
                 required: "Campo obrigatório",
+                onBlur: () =>calculateMedia(),
                 pattern: {
-                  value: /^\d+(\.\d{1,2})?$/,
+                  value: /^(10(\.0{1,2})?|\d(\.\d{1,2})?)$/,
                   message: " Maximum two decimal places allowed.",
                 },
-                value: 0.0,
-              })}
+               
+                })}
               error={!!errors.nota3}
               errorMessage={errors.nota3?.message}
             />
             <InputComponent
               id="nota4"
               name="nota4"
-              type="number"
+              type="text"
               placeholder="Digite a nota 4"
               label="Nota 4"
               register={register("nota4", {
                 required: "Campo obrigatório",
+                onBlur: () =>calculateMedia(),
                 pattern: {
-                  value: /^\d+(\.\d{1,2})?$/,
+                  value: /^(10(\.0{1,2})?|\d(\.\d{1,2})?)$/,
                   message: "Máximo de duas casas decimais permitidas.",
                 },
-                validate: {
-                  isInRange: (value) => {
-                    const floatValue = parseFloat(value);
-                    return floatValue >= 0 && floatValue <= 10;
-                  },
-                },
+               
+
               })}
               error={!!errors.nota4}
               errorMessage={
@@ -141,17 +161,20 @@ export const RegisterLocationComponent = () => {
             <InputComponent
               id="media"
               name="media"
-              type="number"
+              type="text"
               placeholder="Digite a média"
               label="Média"
               register={register("media", {
                 required: "Campo obrigatório",
+
                 pattern: {
-                  value: /^\d+(\.\d{1,2})?$/,
+                  value: /^(10(\.0{1,2})?|\d(\.\d{1,2})?)$/,
                   message: " Maximum two decimal places allowed.",
                 },
-                value: 0.0,
+                
               })}
+              value={media}
+              readOnly={true}
               error={!!errors.media}
               errorMessage={errors.media?.message}
             />
@@ -168,6 +191,7 @@ export const RegisterLocationComponent = () => {
                   message: "Campo precisa ter menos de 64 caracteres",
                 },
               })}
+              
               error={!!errors.situacao}
               errorMessage={errors.situacao?.message}
             />
