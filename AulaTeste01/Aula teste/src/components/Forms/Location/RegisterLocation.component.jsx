@@ -27,7 +27,7 @@ export const RegisterLocationComponent = () => {
     const notas = Object.values(values).map(parseFloat);
     const total = notas.reduce((acc, nota) => acc + nota, 0);
     const average = total / notas.length || 0;
-    setMedia(average.toFixed(2));
+    setMedia(average.toFixed(1));
     setValue("media",media)
     if (media >= 7.0) {
       setValue("situacao","Aprovado")
@@ -49,7 +49,8 @@ export const RegisterLocationComponent = () => {
     <>
       <Styled.Form onSubmit={handleSubmit(submitForm)}>
         <Styled.FormColumn>
-          <InputComponent
+          {id && 
+            <InputComponent
             id="matricula"
             name="matricula"
             type="text"
@@ -61,7 +62,8 @@ export const RegisterLocationComponent = () => {
             
             error={!!errors.matricula}
             errorMessage={errors.matricula?.message}
-          />
+            />
+          }
           <InputComponent
             id="nome"
             name="nome"
@@ -191,7 +193,8 @@ export const RegisterLocationComponent = () => {
                   message: "Campo precisa ter menos de 64 caracteres",
                 },
               })}
-              
+              readOnly={true}
+
               error={!!errors.situacao}
               errorMessage={errors.situacao?.message}
             />
