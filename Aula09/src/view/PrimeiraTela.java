@@ -2,19 +2,19 @@ package view;
 
 import java.awt.EventQueue;
 import java.awt.GridLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JToggleButton;
 import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 public class PrimeiraTela {
 
@@ -205,5 +205,29 @@ public class PrimeiraTela {
 		});
 		btnMostrar5.setBounds(661, 88, 89, 23);
 		frame.getContentPane().add(btnMostrar5);
+
+		JButton btnNewButton = new JButton("BatatataIntern");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaInterna telaInterna = new JanelaInterna();
+				frame.getContentPane().add(telaInterna);
+				telaInterna.setVisible(true);
+				telaInterna.setClosable(true);
+
+			}
+		});
+		btnNewButton.setBounds(322, 289, 175, 23);
+		frame.getContentPane().add(btnNewButton);
+
+		JButton btnNewButton_1 = new JButton("Batatata");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaSecundaria tela2 = new JanelaSecundaria();
+				tela2.setVisible(true);
+				tela2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
+		});
+		btnNewButton_1.setBounds(396, 255, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 }
