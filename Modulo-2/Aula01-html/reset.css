@@ -1,0 +1,62 @@
+/* Resetting box-sizing to border-box for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Removing default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+dt,
+dd,
+blockquote,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* Removing default styles from lists */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Removing default styles from links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Removing default border styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Removing default border from images */
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensuring consistent font sizing */
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+/* Setting a default background color */
+body {
+  background-color: #ffffff;
+}

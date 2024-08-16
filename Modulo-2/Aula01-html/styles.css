@@ -1,0 +1,100 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.main-container {
+  flex: 1;
+}
+body {
+  background-image: url("https://cdn.leroymerlin.com.br/products/papel_de_parede_adesivo_lavavel_padaria_3m_1567365240_588f_600x600.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.header-container {
+  background-color: #ffe4b5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 1rem;
+  gap: 1rem;
+  height: 10%;
+}
+.header-title {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #ffa500;
+  text-shadow: 0.2rem 0.2rem 0.2rem #000;
+  transition: transform 0.3s ease-in-out;
+}
+.header-title:hover {
+  transform: scale(1.1);
+}
+
+.header-content {
+  position: relative;
+  top: 2.5rem;
+  left: 22.5rem;
+}
+.header-content-text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #000;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  height: auto;
+  text-align: center;
+}
+.main-container-title {
+  font-size: 4rem;
+  font-weight: 100;
+  color: #000;
+}
+.main-content {
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+.main-product-wrapper {
+  background-color: #ffffe0;
+  border-top-right-radius: 2rem;
+  text-align: justify;
+  
+}
+
+.main-content-title {
+  opacity: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #ffa500;
+  text-shadow: 0.1rem 0.1rem 0.1rem #000;
+}
+
+.main-content-img {
+  max-width: 35rem;
+  max-height: 25rem;
+}
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+  padding: 1rem;
+  width: 100%;
+  height: 5%;
+  margin-top: auto;
+  background-color: #ffe4b5;
+}
