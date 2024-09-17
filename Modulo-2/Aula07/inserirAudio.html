@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserir Audio</title>
+    <link rel="stylesheet" href="./ste.css" />
+</head>
+
+<body>
+    <h1>Inserindo Audio</h1>
+    <span>
+        atributos da tag audio
+        <br>
+        metadata: vai carregar as informações do audio (tempo,nome,etc)
+        <br>
+        none: não carregar o audio até que seja ativado
+    </span>
+    <h3>Audio 1</h3>
+    <audio src="./Audio/deathmetal.mp3" preload="auto" controls></audio>
+
+    <h3>Audio 2</h3>
+    <audio preload="metadata" controls loop>
+        <source src="./Audio/som.mp3" type="audio/mp3">
+        <source src="./Audio/abertura2.mp3" type="audio/mp3">
+    </audio>
+
+</body>
+
+</html>
